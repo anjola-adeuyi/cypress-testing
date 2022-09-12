@@ -2,6 +2,6 @@
 
 describe('Empty Test', () => {
   it('Test One', () => {
-    expect(true).to.equal(true);
+    cy.visit('https://codedamn.com');
   });
 });
