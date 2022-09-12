@@ -1,8 +1,6 @@
-# A Photoshop React with Typescript Project
+# Cypress Testing
 
-## PhotoEdit
-
-[Live Url https://photoshop-react-typescript.vercel.app/](https://photoshop-react-typescript.vercel.app/)
+## Cypress on chrome and electron
 
 ![](cypress-outcome.png)
 
@@ -13,7 +11,9 @@
 ## How to use
 
 ```bash
-yarn
+npm init -y
 # then
-yarn dev
+npm i cypress
+# then
+npx cypress open
 ```
