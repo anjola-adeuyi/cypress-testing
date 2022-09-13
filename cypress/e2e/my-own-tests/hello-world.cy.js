@@ -1,7 +1,7 @@
 /// <reference types="cypress"/>
 
-describe('Empty Test', () => {
-  it('Test One', () => {
+describe('Basic Test', () => {
+  it('We have homepage Title', () => {
     cy.visit('https://codedamn.com');
   });
 });

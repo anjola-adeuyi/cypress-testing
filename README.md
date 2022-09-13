@@ -17,3 +17,5 @@ npm i cypress
 # then
 npx cypress open
 ```
+
+![](my-image.png)
