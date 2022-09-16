@@ -18,9 +18,11 @@ describe('Codedamn Test', () => {
 
   it.only('Login Page looks good', () => {
     cy.visit('https://codedamn.com');
-    cy.contains('Open main menu').click();
+    cy.get('[data-bypassmenuclose="true"]').click();
+    // cy.contains('Open main menu').click();
     cy.contains('Create Account').click();
     cy.contains('free account').should('exist');
+    cy.get('[data-testid="google-oauth-btn"]').should('exist');
   });
 
   it('Form submission Test', () => {
