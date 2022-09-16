@@ -43,6 +43,11 @@ describe('Codedamn Test', () => {
     // 5. Verify that the URL is correct
     cy.url().should('include', '/password-reset');
 
+    cy.log('Current URL from log: ', cy.url());
+    cy.url().then((val) => {
+      cy.log('Current URL from cb: ', val);
+    });
+
     // 6. Click on the "Back to Login" link
     cy.go('back');
 
