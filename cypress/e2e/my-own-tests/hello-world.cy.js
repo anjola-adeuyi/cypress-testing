@@ -16,13 +16,23 @@ describe('Codedamn Test', () => {
     cy.contains('Explore All Roadmaps').click();
   });
 
-  it.only('Login Page looks good', () => {
+  it('Login Page looks good', () => {
     cy.visit('https://codedamn.com');
     cy.get('[data-bypassmenuclose="true"]').click();
     // cy.contains('Open main menu').click();
     cy.contains('Create Account').click();
     cy.contains('free account').should('exist');
     cy.get('[data-testid="google-oauth-btn"]').should('exist');
+    cy.get('[data-testid="github-oauth-btn"]').should('exist');
+    cy.contains('Or use email to signup').should('exist');
+  });
+
+  it.only('The Login page links work', () => {
+    cy.visit('https://codedamn.com');
+    cy.get('[data-bypassmenuclose="true"]').click();
+    cy.contains('Login').click();
+    cy.contains('Forgot your password?').click({ force: true });
+    cy.url().should('include', '/password-reset');
   });
 
   it('Form submission Test', () => {
