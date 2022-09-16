@@ -28,11 +28,29 @@ describe('Codedamn Test', () => {
   });
 
   it.only('The Login page links work', () => {
+    // 1. Visit homepage
     cy.visit('https://codedamn.com');
+
+    // 2. Click on the menu button
     cy.get('[data-bypassmenuclose="true"]').click();
+
+    // 3. Click on the "Login"
     cy.contains('Login').click();
+
+    // 4. Click on the "Forgot Password" link
     cy.contains('Forgot your password?').click({ force: true });
+
+    // 5. Verify that the URL is correct
     cy.url().should('include', '/password-reset');
+
+    // 6. Click on the "Back to Login" link
+    cy.go('back');
+
+    // 7. click on the "Create Account" link
+    cy.contains('Create one').click({ force: true });
+
+    // 8. Verify that the URL is correct
+    cy.url().should('include', '/register');
   });
 
   it('Form submission Test', () => {
