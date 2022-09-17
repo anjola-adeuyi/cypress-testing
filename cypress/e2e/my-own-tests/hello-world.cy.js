@@ -7,22 +7,12 @@ describe('Codedamn Test', () => {
   });
 
   it('Basic tests', () => {
-    cy.visit('https://codedamn.com');
-
     cy.contains('Learn Programming').should('be.visible');
 
-    cy.contains('Explore All Roadmaps').click();
-  });
-
-  it('Mobile viewport size', () => {
-    cy.viewport(320, 568);
-    cy.visit('https://codedamn.com');
-    cy.contains('Learn Programming').should('be.visible');
     cy.contains('Explore All Roadmaps').click();
   });
 
   it('Login Page looks good', () => {
-    cy.visit('https://codedamn.com');
     cy.get('[data-bypassmenuclose="true"]').click();
     // cy.contains('Open main menu').click();
     cy.contains('Create Account').click();
@@ -33,8 +23,8 @@ describe('Codedamn Test', () => {
   });
 
   it('The Login page links work', () => {
-    // 1. Visit homepage
-    cy.visit('https://codedamn.com');
+    // 1. Visit homepage - done already on beforeEach block
+    // cy.visit('https://codedamn.com');
 
     // 2. Click on the menu button
     cy.get('[data-bypassmenuclose="true"]').click();
@@ -64,8 +54,6 @@ describe('Codedamn Test', () => {
   });
 
   it('Form submission Test', () => {
-    cy.viewport(1280, 720);
-    cy.visit('https://codedamn.com');
     cy.contains('Sign in').click();
     // cy.get('#email').type('Jola' + Math.random() + '@gmail.com', {
     //   force: true,
@@ -78,8 +66,6 @@ describe('Codedamn Test', () => {
   });
 
   it.only('Authenticating test and New file feature works', () => {
-    cy.viewport(1280, 1020);
-    cy.visit('https://codedamn.com');
     cy.contains('Sign in').click();
     cy.get('[data-testid="username"]').type('Jola');
   });
