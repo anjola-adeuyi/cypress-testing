@@ -66,7 +66,26 @@ describe('Codedamn Test', () => {
   });
 
   it.only('Authenticating test and New file feature works', () => {
-    cy.contains('Sign in').click();
-    cy.get('[data-testid="username"]').type('Jola');
+    // cy.contains('Sign in').click();
+    cy.visit('https://codedamn.com/login');
+    // cy.get('[data-testid="username"]').type('Jola', { force: true });
+    cy.get('input[id="email"]').type('Jola', { force: true });
+    cy.get('[data-testid="password"]').type(process.env.PWD, { force: true });
+    cy.get('[data-testid="login"]').click({ force: true });
+
+    cy.visit('https://codedamn.com/playgrounds?template=html');
+    // cy.get('data-testid="create-snippet-btn"').click();
+    cy.contains('Create Playground').click();
+
+    cy.contains('Creating a new playground for you').should('exist');
+    cy.contains('Creating a new playground for you', {
+      timeout: 10 * 1000,
+    }).should('not.exist');
+
+    cy.get('.xterm-selection-layer')
+      .type('{ctrl}{c}', { force: true })
+      .type('touch testscript.js', {
+        force: true,
+      });
   });
 });
