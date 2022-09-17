@@ -1,6 +1,11 @@
 /// <reference types="cypress"/>
 
 describe('Codedamn Test', () => {
+  beforeEach(() => {
+    cy.viewport(1280, 1020);
+    cy.visit('https://codedamn.com');
+  });
+
   it('Basic tests', () => {
     cy.visit('https://codedamn.com');
 
@@ -27,7 +32,7 @@ describe('Codedamn Test', () => {
     cy.contains('Or use email to signup').should('exist');
   });
 
-  it.only('The Login page links work', () => {
+  it('The Login page links work', () => {
     // 1. Visit homepage
     cy.visit('https://codedamn.com');
 
@@ -59,9 +64,23 @@ describe('Codedamn Test', () => {
   });
 
   it('Form submission Test', () => {
+    cy.viewport(1280, 720);
     cy.visit('https://codedamn.com');
-    cy.contains('Create Free Account').click();
-    cy.get('#email').type('Jola');
+    cy.contains('Sign in').click();
+    // cy.get('#email').type('Jola' + Math.random() + '@gmail.com', {
+    //   force: true,
+    // });
+    cy.get('[data-testid="username"]').type(
+      'Jola' + Math.random() + '@gmail.com',
+      { force: true }
+    );
     // data-testid="name"
+  });
+
+  it.only('Authenticating test and New file feature works', () => {
+    cy.viewport(1280, 1020);
+    cy.visit('https://codedamn.com');
+    cy.contains('Sign in').click();
+    cy.get('[data-testid="username"]').type('Jola');
   });
 });
